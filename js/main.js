@@ -1,4 +1,4 @@
-'use strict';
+//'use strict';
 
 //#1
 var counter = (function (x) {
@@ -56,7 +56,7 @@ var myPrint = function (a, b, res) {
     return a + '^' + b + '=' + res;
 }
 var myPow = function (a, b, callback) {
-    let func = (a, b) => {
+    var func = (a, b) => {
         if (b === 0) {
             return 1;
         }
@@ -75,14 +75,14 @@ console.log(myPow(3, 4, myPrint));
 console.log('----------------------------------');
 
 //#4
-let car = new Object({
+var car = new Object({
     engine: 2000,
     model: 'Lacetti',
     name: 'Chevrolet',
     year: 2010,
     used: 'used'
 });
-let car2 = new Object({
+var car2 = new Object({
     engine: 5000,
     model: 'FX50 AWD',
     name: 'Infiniti',
@@ -92,7 +92,7 @@ let car2 = new Object({
 
 
 //#5
-let info = function () {
+var info = function () {
     return this.name + ' ' + this.model + ', ' + this.engine + 'cc, year ' + this.year + ', ' + this.used;
 }
 
@@ -170,17 +170,12 @@ console.log(myMax(list)); // 233
 console.log('----------------------------------');
 
 //#8
-var myMull = function (a, b) {
+var myMul = function (a, b) {
     return a * b;
 }
-var myDouble = function (n) {
-    var func = myMull.bind(null, n, 2);
-    return func(n, 2);
-}
-var myTriple = function (n) {
-    var func = myMull.bind(null, n, 3);
-    return func(n, 3);
-}
+var myDouble = myMul.bind(null, 2);
+var myTriple = myMul.bind(null, 3);
+
 console.log(myDouble(3)); // = myMul(2, 3) = 6
 console.log(myDouble(4)); // = myMul(2, 4) = 8
 console.log(myDouble(5)); // = myMul(2, 5) = 10
@@ -192,9 +187,7 @@ console.log(myTriple(5)); // = myMul(3, 5) = 15
 let notUniqNums = [1, 1, 2, 3, 4, 5, 6, 7];
 let notUniqStrings = ['Bob', 'Kate', 'Jhon', 'Tom', 'Jhon', 'Kate', 'Tom', 'Bob', 'Jhon', 'Tom'];
 var myUniq = function(arr){
-    var result = new Set(arr); 
-    //arr.forEach(x => result.add(x));
-    return result;
+    return new Set(arr);
 }
 console.log(myUniq(notUniqNums));
 console.log(myUniq(notUniqStrings));
